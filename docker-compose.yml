@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  messages_api:
+    container_name: messages_api
+    build: ./app
+    restart: always
+    ports:
+      - '5051:5051'
+    volumes:
+      - ./app:/Messages_app
+    depends_on:
+      - messages_db
+    environment:
+      - DB_URL=postgresql://postgres:postgres@messages_db:5432/postgres
+  messages_db:
+    container_name: messages_db
+    image: postgres:12
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

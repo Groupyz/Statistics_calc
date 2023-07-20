@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Flask = { version = "*", extras = ["async"] }
+asgiref = "*"
+aioflask = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
+Flask-SQLAlchemy = "*"
+pytest = "*"
+pytest-asyncio = "*"
+
+[dev-packages]
+black = "*"
+pylint = "*"
+pycodestyle = "*"
+
+
+[requires]
+python_version = "3.11"
